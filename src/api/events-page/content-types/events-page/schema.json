@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "events_pages",
+  "info": {
+    "singularName": "events-page",
+    "pluralName": "events-pages",
+    "displayName": "Events Page Events",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event.event"
+    }
+  }
+}

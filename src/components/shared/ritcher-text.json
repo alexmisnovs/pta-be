@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_shared_ritcher_texts",
+  "info": {
+    "displayName": "Ritcher Text",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "blocks",
+      "required": true
+    }
+  }
+}

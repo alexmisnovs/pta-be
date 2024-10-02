@@ -32,7 +32,8 @@ export default {
     ],
     translations: {
       en: {
-        "Auth.form.welcome.title": "Welcome to st Modwens"
+        "Auth.form.welcome.title": "Welcome to St Modwens PTA",
+        "Auth.form.welcome.subtitle": "Log in to your control panel"
         // Users: "Utilisateurs",
         // City: "CITY (FRENCH)",
         // // Customize the label of the Content Manager table.

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_spoilers",
+  "info": {
+    "displayName": "spoiler",
+    "icon": "chartPie"
+  },
+  "options": {},
+  "attributes": {
+    "clickableText": {
+      "type": "string"
+    },
+    "actualSpoiler": {
+      "type": "text"
+    }
+  }
+}

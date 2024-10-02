@@ -611,6 +611,74 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiEventEvent extends Struct.CollectionTypeSchema {
+  collectionName: 'events';
+  info: {
+    singularName: 'event';
+    pluralName: 'events';
+    displayName: 'Event';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    isPast: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    date: Schema.Attribute.Date;
+    blocks: Schema.Attribute.DynamicZone<
+      ['shared.slider', 'shared.ritcher-text', 'shared.media', 'shared.quote']
+    >;
+    isFundRaising: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    description: Schema.Attribute.Text;
+    slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
+  };
+}
+
+export interface ApiEventsPageEventsPage extends Struct.SingleTypeSchema {
+  collectionName: 'events_pages';
+  info: {
+    singularName: 'events-page';
+    pluralName: 'events-pages';
+    displayName: 'Events Page Events';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    events: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::events-page.events-page'
+    >;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -639,12 +707,80 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
+  collectionName: 'home_pages';
+  info: {
+    singularName: 'home-page';
+    pluralName: 'home-pages';
+    displayName: 'Home Page Events';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    events: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
+    content: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::home-page.home-page'
+    >;
+  };
+}
+
+export interface ApiPollPoll extends Struct.CollectionTypeSchema {
+  collectionName: 'polls';
+  info: {
+    singularName: 'poll';
+    pluralName: 'polls';
+    displayName: 'Poll';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
+    content: Schema.Attribute.Blocks;
+    blocks: Schema.Attribute.DynamicZone<
+      ['shared.ritcher-text', 'shared.testimonial', 'shared.ckeditor']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::poll.poll'>;
+  };
+}
+
 export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
   collectionName: 'team_members';
   info: {
     singularName: 'team-member';
     pluralName: 'team-members';
     displayName: 'Team Member';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -654,6 +790,14 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
     description: Schema.Attribute.Text & Schema.Attribute.Required;
     avatar: Schema.Attribute.Media<'images'>;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
+    bodyContent: Schema.Attribute.DynamicZone<
+      [
+        'shared.testimonial',
+        'shared.rich-text',
+        'shared.spoiler',
+        'shared.ritcher-text',
+      ]
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -1048,7 +1192,11 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::event.event': ApiEventEvent;
+      'api::events-page.events-page': ApiEventsPageEventsPage;
       'api::global.global': ApiGlobalGlobal;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::poll.poll': ApiPollPoll;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;

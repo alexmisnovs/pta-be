@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "isPast": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": false
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "shared.slider",
+        "shared.ritcher-text",
+        "shared.media",
+        "shared.quote"
+      ]
+    },
+    "isFundRaising": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    }
+  }
+}
