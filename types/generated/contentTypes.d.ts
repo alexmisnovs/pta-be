@@ -667,6 +667,36 @@ export interface ApiHomePageContentHomePageContent
   };
 }
 
+export interface ApiNewsletterSignupNewsletterSignup
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'newsletter_signups';
+  info: {
+    displayName: 'Newsletter Signup';
+    pluralName: 'newsletter-signups';
+    singularName: 'newsletter-signup';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::newsletter-signup.newsletter-signup'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiVolunteerVolunteer extends Struct.CollectionTypeSchema {
   collectionName: 'volunteers';
   info: {
@@ -1220,6 +1250,7 @@ declare module '@strapi/strapi' {
       'api::global.global': ApiGlobalGlobal;
       'api::header.header': ApiHeaderHeader;
       'api::home-page-content.home-page-content': ApiHomePageContentHomePageContent;
+      'api::newsletter-signup.newsletter-signup': ApiNewsletterSignupNewsletterSignup;
       'api::volunteer.volunteer': ApiVolunteerVolunteer;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
