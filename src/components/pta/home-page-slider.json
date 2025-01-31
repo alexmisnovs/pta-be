@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_pta_home_page_sliders",
+  "info": {
+    "displayName": "Home Page Slider",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "buttonLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button-link"
+    },
+    "slides": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

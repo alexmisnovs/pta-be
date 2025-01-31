@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_pta_donate_buttons",
+  "info": {
+    "displayName": "Donate Button"
+  },
+  "options": {},
+  "attributes": {
+    "link": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

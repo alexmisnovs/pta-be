@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "headers",
+  "info": {
+    "singularName": "header",
+    "pluralName": "headers",
+    "displayName": "Header "
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "logoText": {
+      "type": "string"
+    },
+    "logoImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "menuLink": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.button-link"
+    },
+    "donateButtonLink": {
+      "displayName": "Donate Button",
+      "type": "component",
+      "repeatable": false,
+      "component": "pta.donate-button"
+    }
+  }
+}
