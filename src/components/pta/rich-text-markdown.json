@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_pta_rich_text_markdowns",
+  "info": {
+    "displayName": "Rich Text Markdown"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}
