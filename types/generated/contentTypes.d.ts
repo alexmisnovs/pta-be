@@ -510,36 +510,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiFeaturedEventFeaturedEvent extends Struct.SingleTypeSchema {
-  collectionName: 'featured_events';
-  info: {
-    displayName: 'Featured Event';
-    pluralName: 'featured-events';
-    singularName: 'featured-event';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    events: Schema.Attribute.Relation<'oneToMany', 'api::event.event'>;
-    heading: Schema.Attribute.String;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::featured-event.featured-event'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiFeaturedProjectDonationFeaturedProjectDonation
   extends Struct.SingleTypeSchema {
   collectionName: 'featured_project_donations';
@@ -642,6 +612,7 @@ export interface ApiHomePageContentHomePageContent
   extends Struct.SingleTypeSchema {
   collectionName: 'home_page_contents';
   info: {
+    description: '';
     displayName: 'Home Page Content';
     pluralName: 'home-page-contents';
     singularName: 'home-page-content';
@@ -650,6 +621,15 @@ export interface ApiHomePageContentHomePageContent
     draftAndPublish: true;
   };
   attributes: {
+    blocks: Schema.Attribute.DynamicZone<
+      [
+        'pta.total-donations',
+        'pta.home-page-slider',
+        'pta.home-page-about',
+        'pta.hero-section',
+      ]
+    >;
+    content: Schema.Attribute.RichText;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1245,7 +1225,6 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::event.event': ApiEventEvent;
-      'api::featured-event.featured-event': ApiFeaturedEventFeaturedEvent;
       'api::featured-project-donation.featured-project-donation': ApiFeaturedProjectDonationFeaturedProjectDonation;
       'api::global.global': ApiGlobalGlobal;
       'api::header.header': ApiHeaderHeader;

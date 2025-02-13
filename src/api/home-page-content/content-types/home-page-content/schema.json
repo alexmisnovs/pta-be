@@ -4,7 +4,8 @@
   "info": {
     "singularName": "home-page-content",
     "pluralName": "home-page-contents",
-    "displayName": "Home Page Content"
+    "displayName": "Home Page Content",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,18 @@
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "pta.total-donations",
+        "pta.home-page-slider",
+        "pta.home-page-about",
+        "pta.hero-section"
+      ]
+    },
+    "content": {
+      "type": "richtext"
     }
   }
 }
