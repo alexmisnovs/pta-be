@@ -486,12 +486,18 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   };
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
-      ['shared.rich-text', 'shared.quote', 'shared.media']
+      [
+        'shared.quote',
+        'shared.media',
+        'pta.rich-text-markdown',
+        'shared.slider',
+      ]
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     dateTime: Schema.Attribute.DateTime;
+    description: Schema.Attribute.Text;
     donationGoal: Schema.Attribute.Integer;
     donationReceived: Schema.Attribute.Integer;
     featuredImage: Schema.Attribute.Media<
