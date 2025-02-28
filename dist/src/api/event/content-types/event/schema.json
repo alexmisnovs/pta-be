@@ -1,0 +1,59 @@
+{
+    "kind": "collectionType",
+    "collectionName": "events",
+    "info": {
+        "singularName": "event",
+        "pluralName": "events",
+        "displayName": "Event",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "heading": {
+            "type": "string"
+        },
+        "isPast": {
+            "type": "boolean",
+            "default": false
+        },
+        "dateTime": {
+            "type": "datetime"
+        },
+        "featuredImage": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos",
+                "audios"
+            ]
+        },
+        "blocks": {
+            "type": "dynamiczone",
+            "components": [
+                "shared.quote",
+                "shared.media",
+                "pta.rich-text-markdown",
+                "shared.slider"
+            ]
+        },
+        "donationGoal": {
+            "type": "integer"
+        },
+        "donationReceived": {
+            "type": "integer"
+        },
+        "slug": {
+            "type": "uid",
+            "targetField": "heading"
+        },
+        "description": {
+            "type": "text"
+        }
+    }
+}

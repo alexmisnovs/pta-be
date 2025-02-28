@@ -1,0 +1,21 @@
+{
+    "kind": "collectionType",
+    "collectionName": "newsletter_signups",
+    "info": {
+        "singularName": "newsletter-signup",
+        "pluralName": "newsletter-signups",
+        "displayName": "Newsletter Signup"
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string"
+        },
+        "email": {
+            "type": "email"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "collectionName": "components_pta_total_donations",
+    "info": {
+        "displayName": "Total Donations"
+    },
+    "options": {},
+    "attributes": {
+        "text": {
+            "type": "string"
+        },
+        "total": {
+            "type": "decimal"
+        }
+    }
+}
