@@ -25,6 +25,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::event.event"
+    },
+    "phoneNumber": {
+      "type": "string"
     }
   }
 }
