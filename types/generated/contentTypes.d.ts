@@ -683,6 +683,44 @@ export interface ApiNewsletterSignupNewsletterSignup
   };
 }
 
+export interface ApiProjectProject extends Struct.CollectionTypeSchema {
+  collectionName: 'projects';
+  info: {
+    description: '';
+    displayName: 'Project';
+    pluralName: 'projects';
+    singularName: 'project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blocks: Schema.Attribute.DynamicZone<['shared.rich-text', 'shared.media']>;
+    body: Schema.Attribute.RichText;
+    coverImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    donateButtonLink: Schema.Attribute.Component<'pta.donate-button', true>;
+    donationsGoal: Schema.Attribute.Decimal;
+    donationsReceived: Schema.Attribute.Decimal;
+    files: Schema.Attribute.Media<'images', true>;
+    heading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::project.project'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'heading'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiVolunteerVolunteer extends Struct.CollectionTypeSchema {
   collectionName: 'volunteers';
   info: {
@@ -1237,6 +1275,7 @@ declare module '@strapi/strapi' {
       'api::header.header': ApiHeaderHeader;
       'api::home-page-content.home-page-content': ApiHomePageContentHomePageContent;
       'api::newsletter-signup.newsletter-signup': ApiNewsletterSignupNewsletterSignup;
+      'api::project.project': ApiProjectProject;
       'api::volunteer.volunteer': ApiVolunteerVolunteer;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
