@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contact_form_entries",
+  "info": {
+    "singularName": "contact-form-entry",
+    "pluralName": "contact-form-entries",
+    "displayName": "ContactFormEntry",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email",
+      "unique": false
+    },
+    "message": {
+      "type": "text"
+    }
+  }
+}
