@@ -486,6 +486,7 @@ export interface ApiContactFormEntryContactFormEntry
     draftAndPublish: false;
   };
   attributes: {
+    captcha: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

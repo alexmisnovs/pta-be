@@ -7,7 +7,7 @@ module.exports = {
     const { result } = event;
     console.log(result);
 
-    console.log("I am coming from lifecycles hook");
+    console.log("I am coming from lifecycles hook contact form");
     // try {
     //   await strapi.plugins["email"].services.email.send({
     //     to: result.email,
@@ -25,16 +25,16 @@ module.exports = {
 
     // maybe need to first check if contact is alrady in the audience before creating ?
 
-    try {
-      resend.contacts.create({
-        email: result.email,
-        firstName: result.name,
-        unsubscribed: false,
-        audienceId: process.env.RESEND_AUDIENCE_ID,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   resend.contacts.create({
+    //     email: result.email,
+    //     firstName: result.name,
+    //     unsubscribed: false,
+    //     audienceId: process.env.RESEND_AUDIENCE_ID,
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
 
     // send email from resend
     try {
