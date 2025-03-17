@@ -21,6 +21,9 @@
     },
     "message": {
       "type": "text"
+    },
+    "captcha": {
+      "type": "text"
     }
   }
 }

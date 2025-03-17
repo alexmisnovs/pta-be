@@ -7,7 +7,19 @@ export default {
    *
    * This gives you an opportunity to extend code.
    */
-  register(/* { strapi }: { strapi: Core.Strapi } */) {},
+  register({ strapi }) {
+    strapi.log.info("In register function.");
+    const extensionService = strapi.plugin("graphql").service("extension");
+
+    // read-single policy for letter
+    extensionService.use({
+      resolversConfig: {
+        "Mutation.createContactFormEntry": {
+          policies: ["global::verifyCaptcha"],
+        },
+      },
+    });
+  },
 
   /**
    * An asynchronous bootstrap function that runs before
