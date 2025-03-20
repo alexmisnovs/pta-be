@@ -21,7 +21,15 @@ export default [
       },
     },
   },
-  "strapi::cors",
+  {
+    name: "strapi::cors",
+    config: {
+      origin: "*",
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
+      headers: "*",
+      keepHeaderOnError: true,
+    },
+  },
   "strapi::poweredBy",
   "strapi::query",
   "strapi::body",

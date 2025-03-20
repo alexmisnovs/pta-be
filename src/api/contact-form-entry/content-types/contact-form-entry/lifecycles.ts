@@ -5,9 +5,9 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 module.exports = {
   async afterCreate(event) {
     const { result } = event;
-    console.log(result);
+    // console.log(result);
 
-    console.log("I am coming from lifecycles hook contact form");
+    // console.log("I am coming from lifecycles hook contact form");
     // try {
     //   await strapi.plugins["email"].services.email.send({
     //     to: result.email,

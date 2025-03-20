@@ -486,7 +486,6 @@ export interface ApiContactFormEntryContactFormEntry
     draftAndPublish: false;
   };
   attributes: {
-    captcha: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -727,6 +726,7 @@ export interface ApiHomePageContentHomePageContent
         'pta.home-page-slider',
         'pta.home-page-about',
         'pta.hero-section',
+        'pta.featured-project',
       ]
     >;
     content: Schema.Attribute.RichText;

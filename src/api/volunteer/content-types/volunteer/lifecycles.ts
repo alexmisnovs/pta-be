@@ -3,11 +3,25 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 module.exports = {
+  async beforeCreate(event) {
+    // Access the data to be created
+    const { data } = event.params;
+    // console.log("Data from before create hook", data);
+    // Example: Validate a required field
+    if (!data.name) {
+      throw new Error("Name is required");
+    }
+
+    // Example: Modify data before creation
+    // delete data.captcha;
+    // data.captcha = "security verification passed";
+  },
+
   async afterCreate(event) {
     const { result, params } = event;
-    console.log(result);
-    console.log(params);
-    console.log("I am coming from lifecycles hook");
+    // console.log(result);
+
+    // console.log("After Create hook");
     // try {
     //   await strapi.plugins["email"].services.email.send({
     //     to: result.email,
@@ -20,18 +34,19 @@ module.exports = {
     // } catch (error) {
     //   console.log(error);
     // }
-    // add contact to resend
-    try {
-      resend.contacts.create({
-        email: result.email,
-        firstName: result.name,
 
-        unsubscribed: false,
-        audienceId: process.env.RESEND_AUDIENCE_ID,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    // add contact to resend
+    // try {
+    //   resend.contacts.create({
+    //     email: result.email,
+    //     firstName: result.name,
+
+    //     unsubscribed: false,
+    //     audienceId: process.env.RESEND_AUDIENCE_ID,
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
     // send email from resend
     try {
       resend.emails.send({

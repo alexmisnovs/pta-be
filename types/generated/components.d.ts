@@ -11,6 +11,21 @@ export interface PtaDonateButton extends Struct.ComponentSchema {
   };
 }
 
+export interface PtaFeaturedProject extends Struct.ComponentSchema {
+  collectionName: 'components_pta_featured_projects';
+  info: {
+    displayName: 'Featured project';
+  };
+  attributes: {
+    currentDonations: Schema.Attribute.Decimal;
+    description: Schema.Attribute.Text;
+    goalDonations: Schema.Attribute.Decimal;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    projectLink: Schema.Attribute.Component<'shared.button-link', false>;
+  };
+}
+
 export interface PtaHeroSection extends Struct.ComponentSchema {
   collectionName: 'components_pta_hero_sections';
   info: {
@@ -151,6 +166,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'pta.donate-button': PtaDonateButton;
+      'pta.featured-project': PtaFeaturedProject;
       'pta.hero-section': PtaHeroSection;
       'pta.home-page-about': PtaHomePageAbout;
       'pta.home-page-slider': PtaHomePageSlider;

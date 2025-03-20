@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_pta_featured_projects",
+  "info": {
+    "displayName": "Featured project"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "currentDonations": {
+      "type": "decimal"
+    },
+    "goalDonations": {
+      "type": "decimal"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "projectLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button-link"
+    }
+  }
+}
