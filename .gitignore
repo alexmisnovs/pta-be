@@ -130,3 +130,7 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
+.htaccess
+app.js
+pta-server-check.sh
+tmp/

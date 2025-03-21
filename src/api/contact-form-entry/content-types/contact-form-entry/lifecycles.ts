@@ -7,20 +7,39 @@ module.exports = {
     const { result } = event;
     console.log(result);
 
-    console.log("I am coming from lifecycles hook contact form");
+    // console.log("I am coming from lifecycles hook contact form");
+
+    // send emai to the person who has filled in the form. Do I really need that?
     // try {
     //   await strapi.plugins["email"].services.email.send({
     //     to: result.email,
-    //     from: "palma27@ethereal.email",
-    //     subject: "Hello world",
-    //     text: "Volunteering request",
-    //     html: `<h4>Thanks for joining our volunteer group. We will get in touch soon</h4>`,
+    //     from: "info@stmodwenspta.org.uk",
+    //     subject: "Contact Form Enquiry",
+    //     text: "Thank you for getting in touch with us. We will reply shortly.",
+    //     html: `<h4>Dear ${result.name}, thank you for getting in touch with us. We will get back to you shortly.</h4>`,
     //   });
     //   console.log("Email sent");
     // } catch (error) {
     //   console.log(error);
     // }
 
+    // send email to info@ email that there was a contact form submission.
+
+    //TODO: use email from .env file for the future.
+    try {
+      await strapi.plugins["email"].services.email.send({
+        to: "info@stmodwenspta.org.uk",
+        from: result.email,
+        subject: "Contact Form Enquiry from PTA",
+        text: `Original enquiry: ${result.message}`,
+        html: `<h4>Contact form enquiry</h4>
+        <p>Original enquiry: ${result.message}</p>
+        `,
+      });
+      console.log("Email sent");
+    } catch (error) {
+      console.log(error);
+    }
     // add contact to resend
 
     // maybe need to first check if contact is alrady in the audience before creating ?
@@ -37,15 +56,15 @@ module.exports = {
     // }
 
     // send email from resend
-    try {
-      resend.emails.send({
-        to: result.email,
-        from: "onboarding@resend.dev",
-        subject: "Thanks for Contacing us",
-        html: `<h4>Dear ${result.name}, thank you for contacting us. We will get back to you shortly</h4>`,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   resend.emails.send({
+    //     to: result.email,
+    //     from: "onboarding@resend.dev",
+    //     subject: "Thanks for Contacing us",
+    //     html: `<h4>Dear ${result.name}, thank you for contacting us. We will get back to you shortly</h4>`,
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   },
 };

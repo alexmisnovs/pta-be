@@ -21,7 +21,9 @@
         "pta.total-donations",
         "pta.home-page-slider",
         "pta.home-page-about",
-        "pta.hero-section"
+        "pta.hero-section",
+        "pta.featured-project",
+        "pta.home-page-volunteer-block"
       ]
     },
     "content": {

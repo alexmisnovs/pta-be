@@ -486,7 +486,6 @@ export interface ApiContactFormEntryContactFormEntry
     draftAndPublish: false;
   };
   attributes: {
-    captcha: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -574,41 +573,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'heading'>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiFeaturedProjectDonationFeaturedProjectDonation
-  extends Struct.SingleTypeSchema {
-  collectionName: 'featured_project_donations';
-  info: {
-    description: '';
-    displayName: 'Featured Project Donation';
-    pluralName: 'featured-project-donations';
-    singularName: 'featured-project-donation';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    donateButtonLink: Schema.Attribute.Component<'shared.button-link', false>;
-    featuredImage: Schema.Attribute.Media<'images'>;
-    goalAmount: Schema.Attribute.Integer;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::featured-project-donation.featured-project-donation'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    raisedAmount: Schema.Attribute.Integer;
-    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -727,6 +691,8 @@ export interface ApiHomePageContentHomePageContent
         'pta.home-page-slider',
         'pta.home-page-about',
         'pta.hero-section',
+        'pta.featured-project',
+        'pta.home-page-volunteer-block',
       ]
     >;
     content: Schema.Attribute.RichText;
@@ -770,6 +736,38 @@ export interface ApiNewsletterSignupNewsletterSignup
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProductProduct extends Struct.CollectionTypeSchema {
+  collectionName: 'products';
+  info: {
+    displayName: 'Product';
+    pluralName: 'products';
+    singularName: 'product';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    buyButtonLink: Schema.Attribute.Component<'pta.donate-button', false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product.product'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1366,12 +1364,12 @@ declare module '@strapi/strapi' {
       'api::contact-form-entry.contact-form-entry': ApiContactFormEntryContactFormEntry;
       'api::contact-page.contact-page': ApiContactPageContactPage;
       'api::event.event': ApiEventEvent;
-      'api::featured-project-donation.featured-project-donation': ApiFeaturedProjectDonationFeaturedProjectDonation;
       'api::footer.footer': ApiFooterFooter;
       'api::global.global': ApiGlobalGlobal;
       'api::header.header': ApiHeaderHeader;
       'api::home-page-content.home-page-content': ApiHomePageContentHomePageContent;
       'api::newsletter-signup.newsletter-signup': ApiNewsletterSignupNewsletterSignup;
+      'api::product.product': ApiProductProduct;
       'api::project.project': ApiProjectProject;
       'api::volunteer.volunteer': ApiVolunteerVolunteer;
       'plugin::content-releases.release': PluginContentReleasesRelease;
