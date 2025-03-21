@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_pta_event_comments",
+  "info": {
+    "displayName": "Event Comments"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    },
+    "amountRaised": {
+      "type": "decimal"
+    }
+  }
+}

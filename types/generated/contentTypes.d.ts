@@ -554,6 +554,7 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
         'shared.media',
         'pta.rich-text-markdown',
         'shared.slider',
+        'pta.event-comments',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -576,6 +577,10 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    volunteer_jobs: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::volunteer-job.volunteer-job'
+    >;
   };
 }
 
@@ -807,6 +812,37 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'heading'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiVolunteerJobVolunteerJob
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'volunteer_jobs';
+  info: {
+    displayName: 'Volunteer Job';
+    pluralName: 'volunteer-jobs';
+    singularName: 'volunteer-job';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    amount_of_volunteers: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    event: Schema.Attribute.Relation<'manyToOne', 'api::event.event'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::volunteer-job.volunteer-job'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1371,6 +1407,7 @@ declare module '@strapi/strapi' {
       'api::newsletter-signup.newsletter-signup': ApiNewsletterSignupNewsletterSignup;
       'api::product.product': ApiProductProduct;
       'api::project.project': ApiProjectProject;
+      'api::volunteer-job.volunteer-job': ApiVolunteerJobVolunteerJob;
       'api::volunteer.volunteer': ApiVolunteerVolunteer;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

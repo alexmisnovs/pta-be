@@ -2,7 +2,8 @@
   "collectionName": "components_shared_button_links",
   "info": {
     "displayName": "Button Link",
-    "icon": "code"
+    "icon": "code",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -10,7 +11,7 @@
       "type": "string"
     },
     "link": {
-      "type": "string"
+      "type": "text"
     }
   }
 }
