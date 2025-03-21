@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_pta_home_page_volunteer_blocks",
+  "info": {
+    "displayName": "Home Page Volunteer Block"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

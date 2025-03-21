@@ -22,7 +22,8 @@
         "pta.home-page-slider",
         "pta.home-page-about",
         "pta.hero-section",
-        "pta.featured-project"
+        "pta.featured-project",
+        "pta.home-page-volunteer-block"
       ]
     },
     "content": {

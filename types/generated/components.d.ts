@@ -67,6 +67,16 @@ export interface PtaHomePageSlider extends Struct.ComponentSchema {
   };
 }
 
+export interface PtaHomePageVolunteerBlock extends Struct.ComponentSchema {
+  collectionName: 'components_pta_home_page_volunteer_blocks';
+  info: {
+    displayName: 'Home Page Volunteer Block';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+  };
+}
+
 export interface PtaRichTextMarkdown extends Struct.ComponentSchema {
   collectionName: 'components_pta_rich_text_markdowns';
   info: {
@@ -170,6 +180,7 @@ declare module '@strapi/strapi' {
       'pta.hero-section': PtaHeroSection;
       'pta.home-page-about': PtaHomePageAbout;
       'pta.home-page-slider': PtaHomePageSlider;
+      'pta.home-page-volunteer-block': PtaHomePageVolunteerBlock;
       'pta.rich-text-markdown': PtaRichTextMarkdown;
       'pta.total-donations': PtaTotalDonations;
       'shared.button-link': SharedButtonLink;
