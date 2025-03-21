@@ -27,10 +27,12 @@ module.exports = {
 
     //TODO: use email from .env file for the future.
     try {
+      console.log("Trying to send from nodemailer");
       await strapi.plugins["email"].services.email.send({
         to: "info@stmodwenspta.org.uk",
-        from: result.email,
-        subject: "Contact Form Enquiry from PTA",
+        replyTo: result.email,
+        from: "admin@stmodwenspta.org.uk",
+        subject: "Contact Form Enquiry from PTA Website",
         text: `Original enquiry: ${result.message}`,
         html: `<h4>Contact form enquiry</h4>
         <p>Original enquiry: ${result.message}</p>

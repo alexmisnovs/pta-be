@@ -25,8 +25,9 @@ module.exports = {
     try {
       await strapi.plugins["email"].services.email.send({
         to: "info@stmodwenspta.org.uk",
-        from: "system@stmodwenspta.org.uk",
-        subject: "New volunteer registration",
+        replyTo: result.email,
+        from: "admin@stmodwenspta.org.uk",
+        subject: "New volunteer registred",
         text: `New volunteer registred: ${result.name}`,
         html: `<h4>New volunteer</h4>
         <p>Please check admin for more details: ${result.name}</p>

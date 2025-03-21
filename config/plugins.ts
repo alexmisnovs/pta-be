@@ -2,18 +2,18 @@ module.exports = ({ env }) => ({
   // ...
   email: {
     config: {
-      provider: 'nodemailer',
+      provider: "nodemailer",
       providerOptions: {
-        host: env('SMTP_HOST', 'smtp.ethereal.email'),
-        port: env('SMTP_PORT', 587),
+        host: env("SMTP_HOST", "smtp.ethereal.email"),
+        port: env("SMTP_PORT", 587),
         auth: {
-          user: env('SMTP_USERNAME'),
-          pass: env('SMTP_PASSWORD'),
+          user: env("SMTP_USERNAME"),
+          pass: env("SMTP_PASSWORD"),
         },
       },
       settings: {
-        defaultFrom: 'hello@example.com',
-        defaultReplyTo: 'hello@example.com',
+        defaultFrom: "info@stmodwenspta.org.uk",
+        defaultReplyTo: "info@stmodwenspta.org.uk",
       },
     },
   },

@@ -39,7 +39,8 @@
         "shared.quote",
         "shared.media",
         "pta.rich-text-markdown",
-        "shared.slider"
+        "shared.slider",
+        "pta.event-comments"
       ]
     },
     "donationGoal": {
@@ -54,6 +55,12 @@
     },
     "description": {
       "type": "text"
+    },
+    "volunteer_jobs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::volunteer-job.volunteer-job",
+      "mappedBy": "event"
     }
   }
 }
