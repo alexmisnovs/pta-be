@@ -383,7 +383,13 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   attributes: {
     author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
     blocks: Schema.Attribute.DynamicZone<
-      ['shared.media', 'shared.quote', 'shared.rich-text', 'shared.slider']
+      [
+        'shared.media',
+        'shared.quote',
+        'shared.rich-text',
+        'shared.slider',
+        'pta.text-with-image',
+      ]
     >;
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
@@ -555,6 +561,8 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
         'pta.rich-text-markdown',
         'shared.slider',
         'pta.event-comments',
+        'shared.rich-text',
+        'pta.text-with-image',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -792,7 +800,14 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    blocks: Schema.Attribute.DynamicZone<['shared.rich-text', 'shared.media']>;
+    blocks: Schema.Attribute.DynamicZone<
+      [
+        'shared.rich-text',
+        'shared.media',
+        'shared.slider',
+        'pta.text-with-image',
+      ]
+    >;
     body: Schema.Attribute.RichText;
     coverImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;

@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_pta_text_with_images",
+  "info": {
+    "displayName": "Text With Image",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext"
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageSide": {
+      "type": "enumeration",
+      "enum": [
+        "right",
+        "left"
+      ]
+    },
+    "heading": {
+      "type": "string"
+    }
+  }
+}
