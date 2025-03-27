@@ -40,7 +40,9 @@
         "shared.media",
         "pta.rich-text-markdown",
         "shared.slider",
-        "pta.event-comments"
+        "pta.event-comments",
+        "shared.rich-text",
+        "pta.text-with-image"
       ]
     },
     "donationGoal": {

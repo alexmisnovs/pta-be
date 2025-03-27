@@ -81,10 +81,12 @@ export interface PtaHomePageSlider extends Struct.ComponentSchema {
 export interface PtaHomePageVolunteerBlock extends Struct.ComponentSchema {
   collectionName: 'components_pta_home_page_volunteer_blocks';
   info: {
+    description: '';
     displayName: 'Home Page Volunteer Block';
   };
   attributes: {
     content: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images'>;
   };
 }
 
@@ -95,6 +97,20 @@ export interface PtaRichTextMarkdown extends Struct.ComponentSchema {
   };
   attributes: {
     content: Schema.Attribute.RichText;
+  };
+}
+
+export interface PtaTextWithImage extends Struct.ComponentSchema {
+  collectionName: 'components_pta_text_with_images';
+  info: {
+    description: '';
+    displayName: 'Text With Image';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText;
+    file: Schema.Attribute.Media<'images'>;
+    heading: Schema.Attribute.String;
+    imageSide: Schema.Attribute.Enumeration<['right', 'left']>;
   };
 }
 
@@ -195,6 +211,7 @@ declare module '@strapi/strapi' {
       'pta.home-page-slider': PtaHomePageSlider;
       'pta.home-page-volunteer-block': PtaHomePageVolunteerBlock;
       'pta.rich-text-markdown': PtaRichTextMarkdown;
+      'pta.text-with-image': PtaTextWithImage;
       'pta.total-donations': PtaTotalDonations;
       'shared.button-link': SharedButtonLink;
       'shared.media': SharedMedia;
