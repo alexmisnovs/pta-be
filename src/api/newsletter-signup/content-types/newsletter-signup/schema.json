@@ -4,7 +4,8 @@
   "info": {
     "singularName": "newsletter-signup",
     "pluralName": "newsletter-signups",
-    "displayName": "Newsletter Signup"
+    "displayName": "Newsletter Signup",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -15,7 +16,11 @@
       "type": "string"
     },
     "email": {
-      "type": "email"
+      "type": "email",
+      "unique": true
+    },
+    "resendId": {
+      "type": "text"
     }
   }
 }
