@@ -836,6 +836,7 @@ export interface ApiVolunteerJobVolunteerJob
   extends Struct.CollectionTypeSchema {
   collectionName: 'volunteer_jobs';
   info: {
+    description: '';
     displayName: 'Volunteer Job';
     pluralName: 'volunteer-jobs';
     singularName: 'volunteer-job';
@@ -844,7 +845,6 @@ export interface ApiVolunteerJobVolunteerJob
     draftAndPublish: true;
   };
   attributes: {
-    amount_of_volunteers: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -860,6 +860,10 @@ export interface ApiVolunteerJobVolunteerJob
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    volunteer: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::volunteer.volunteer'
+    >;
   };
 }
 
@@ -878,7 +882,7 @@ export interface ApiVolunteerVolunteer extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
+    email: Schema.Attribute.Email & Schema.Attribute.Unique;
     events_interested: Schema.Attribute.Relation<
       'oneToMany',
       'api::event.event'
