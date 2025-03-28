@@ -3,19 +3,36 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 module.exports = {
-  // async beforeCreate(event) {
-  //   // Access the data to be created
-  //   const { data } = event.params;
-  //   // console.log("Data from before create hook", data);
-  //   // Example: Validate a required field
-  //   if (!data.name) {
-  //     throw new Error("Name is required");
-  //   }
+  async beforeCreate(event) {
+    // try to add contact to resend first, once done can try and update the user to save the resend
+    // Access the data to be created
+    const { data } = event.params;
+    // console.log("Data from before create hook", data);
+    // Example: Validate a required field
+    if (!data.name) {
+      throw new Error("Name is required");
+    }
 
-  //   // Example: Modify data before creation
-  //   // delete data.captcha;
-  //   // data.captcha = "security verification passed";
-  // },
+    // Example: Modify data before creation
+    // delete data.captcha;
+    // data.captcha = "security verification passed";
+    let resendResponse;
+    // TODO, we need to possibly save response id for unsubscribes in the future
+    try {
+      resendResponse = await resend.contacts.create({
+        email: data.email,
+        firstName: data.name,
+        unsubscribed: false,
+        audienceId: process.env.RESEND_AUDIENCE_ID,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    // console.log("Received", data);
+    // console.log("Resend Response", resendResponse);
+
+    data.resendId = resendResponse.data.id;
+  },
 
   async afterCreate(event) {
     const { result, params } = event;
@@ -39,19 +56,28 @@ module.exports = {
     }
 
     // add contact to resend
-    let resendResponse;
-    // TODO, we need to possibly save response id for unsubscribes in the future
-    try {
-      resend.contacts.create({
-        email: result.email,
-        firstName: result.name,
-        unsubscribed: false,
-        audienceId: process.env.RESEND_AUDIENCE_ID,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    // let resendResponse;
+    // // TODO, we need to possibly save response id for unsubscribes in the future
+    // try {
+    //   resendResponse = await resend.contacts.create({
+    //     email: result.email,
+    //     firstName: result.name,
+    //     unsubscribed: false,
+    //     audienceId: process.env.RESEND_AUDIENCE_ID,
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    // console.log("Result", result);
+    // console.log("Resend Response", resendResponse);
+    // try to update the entry from after create:
 
+    // console.log("===Trying to update entry");
+    // const updateResult = await strapi.documents("api::newsletter-signup.newsletter-signup").update({
+    //   documentId: result.id,
+    //   data: { resendId: resendResponse.data.id },
+    // });
+    // console.log("Update Result", updateResult);
     // send email from resend
     // try {
     //   resend.emails.send({
