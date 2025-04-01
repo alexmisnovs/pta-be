@@ -867,6 +867,42 @@ export interface ApiVolunteerJobVolunteerJob
   };
 }
 
+export interface ApiVolunteerPageVolunteerPage extends Struct.SingleTypeSchema {
+  collectionName: 'volunteer_pages';
+  info: {
+    displayName: 'Volunteer Page';
+    pluralName: 'volunteer-pages';
+    singularName: 'volunteer-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blocks: Schema.Attribute.DynamicZone<
+      [
+        'shared.rich-text',
+        'shared.media',
+        'pta.text-with-image',
+        'pta.home-page-volunteer-block',
+      ]
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::volunteer-page.volunteer-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiVolunteerVolunteer extends Struct.CollectionTypeSchema {
   collectionName: 'volunteers';
   info: {
@@ -1426,6 +1462,7 @@ declare module '@strapi/strapi' {
       'api::product.product': ApiProductProduct;
       'api::project.project': ApiProjectProject;
       'api::volunteer-job.volunteer-job': ApiVolunteerJobVolunteerJob;
+      'api::volunteer-page.volunteer-page': ApiVolunteerPageVolunteerPage;
       'api::volunteer.volunteer': ApiVolunteerVolunteer;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
