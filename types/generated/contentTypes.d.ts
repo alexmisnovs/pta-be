@@ -861,7 +861,7 @@ export interface ApiVolunteerJobVolunteerJob
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     volunteer: Schema.Attribute.Relation<
-      'oneToOne',
+      'manyToOne',
       'api::volunteer.volunteer'
     >;
   };
@@ -935,6 +935,10 @@ export interface ApiVolunteerVolunteer extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    volunteer_jobs: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::volunteer-job.volunteer-job'
+    >;
     yearGroup: Schema.Attribute.String;
   };
 }
