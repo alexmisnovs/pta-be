@@ -23,8 +23,9 @@
     },
     "volunteer": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::volunteer.volunteer"
+      "relation": "manyToOne",
+      "target": "api::volunteer.volunteer",
+      "inversedBy": "volunteer_jobs"
     }
   }
 }

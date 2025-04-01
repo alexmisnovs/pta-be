@@ -29,6 +29,12 @@
     },
     "phoneNumber": {
       "type": "string"
+    },
+    "volunteer_jobs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::volunteer-job.volunteer-job",
+      "mappedBy": "volunteer"
     }
   }
 }
