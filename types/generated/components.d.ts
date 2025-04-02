@@ -117,9 +117,11 @@ export interface PtaTextWithImage extends Struct.ComponentSchema {
 export interface PtaTotalDonations extends Struct.ComponentSchema {
   collectionName: 'components_pta_total_donations';
   info: {
+    description: '';
     displayName: 'Total Donations';
   };
   attributes: {
+    donationLink: Schema.Attribute.Component<'shared.button-link', false>;
     text: Schema.Attribute.String;
     total: Schema.Attribute.Decimal;
   };
