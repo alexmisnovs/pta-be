@@ -746,9 +746,10 @@ export interface ApiNewsletterSignupNewsletterSignup
       'api::newsletter-signup.newsletter-signup'
     > &
       Schema.Attribute.Private;
+    mailchimpId: Schema.Attribute.Text;
+    mailchimpStatus: Schema.Attribute.Text;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    resendId: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -912,7 +913,7 @@ export interface ApiVolunteerVolunteer extends Struct.CollectionTypeSchema {
     singularName: 'volunteer';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
@@ -929,6 +930,8 @@ export interface ApiVolunteerVolunteer extends Struct.CollectionTypeSchema {
       'api::volunteer.volunteer'
     > &
       Schema.Attribute.Private;
+    mailchimpId: Schema.Attribute.Text;
+    mailchimpStatus: Schema.Attribute.Text;
     name: Schema.Attribute.String;
     phoneNumber: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
