@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -35,6 +35,12 @@
       "relation": "oneToMany",
       "target": "api::volunteer-job.volunteer-job",
       "mappedBy": "volunteer"
+    },
+    "mailchimpId": {
+      "type": "text"
+    },
+    "mailchimpStatus": {
+      "type": "text"
     }
   }
 }

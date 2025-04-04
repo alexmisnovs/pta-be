@@ -19,7 +19,10 @@
       "type": "email",
       "unique": true
     },
-    "resendId": {
+    "mailchimpId": {
+      "type": "text"
+    },
+    "mailchimpStatus": {
       "type": "text"
     }
   }
