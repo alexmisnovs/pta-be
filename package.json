@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.80",
-    "@strapi/plugin-cloud": "5.8.1",
+    "@strapi/plugin-cloud": "5.12.3",
     "@strapi/plugin-graphql": "^5.9.0",
     "@strapi/plugin-users-permissions": "^5.12.3",
     "@strapi/provider-email-nodemailer": "^5.11.0",
