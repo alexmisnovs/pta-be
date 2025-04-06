@@ -14,11 +14,13 @@ export interface PtaDonateButton extends Struct.ComponentSchema {
 export interface PtaEventComments extends Struct.ComponentSchema {
   collectionName: 'components_pta_event_comments';
   info: {
+    description: '';
     displayName: 'Event Comments';
   };
   attributes: {
     amountRaised: Schema.Attribute.Decimal;
     content: Schema.Attribute.RichText;
+    heading: Schema.Attribute.Text;
   };
 }
 

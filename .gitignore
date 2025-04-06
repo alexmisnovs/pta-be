@@ -9,6 +9,7 @@ Icon
 .Spotlight-V100
 .Trashes
 ._*
+######### need to make sure that .dist is not removed for shared hosting
 .dist
 
 
