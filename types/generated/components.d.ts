@@ -39,6 +39,17 @@ export interface PtaFeaturedProject extends Struct.ComponentSchema {
   };
 }
 
+export interface PtaHeading extends Struct.ComponentSchema {
+  collectionName: 'components_pta_headings';
+  info: {
+    displayName: 'Heading';
+    icon: 'arrowUp';
+  };
+  attributes: {
+    heading: Schema.Attribute.Text;
+  };
+}
+
 export interface PtaHeroSection extends Struct.ComponentSchema {
   collectionName: 'components_pta_hero_sections';
   info: {
@@ -56,9 +67,11 @@ export interface PtaHeroSection extends Struct.ComponentSchema {
 export interface PtaHomePageAbout extends Struct.ComponentSchema {
   collectionName: 'components_pta_home_page_abouts';
   info: {
+    description: '';
     displayName: 'Home Page About';
   };
   attributes: {
+    content: Schema.Attribute.RichText;
     description: Schema.Attribute.Text;
     donateButtonLink: Schema.Attribute.Component<'pta.donate-button', false>;
     featuredImages: Schema.Attribute.Media<'images', true>;
@@ -95,10 +108,12 @@ export interface PtaHomePageVolunteerBlock extends Struct.ComponentSchema {
 export interface PtaRichTextMarkdown extends Struct.ComponentSchema {
   collectionName: 'components_pta_rich_text_markdowns';
   info: {
+    description: '';
     displayName: 'Rich Text Markdown';
   };
   attributes: {
     content: Schema.Attribute.RichText;
+    heading: Schema.Attribute.Text;
   };
 }
 
@@ -210,6 +225,7 @@ declare module '@strapi/strapi' {
       'pta.donate-button': PtaDonateButton;
       'pta.event-comments': PtaEventComments;
       'pta.featured-project': PtaFeaturedProject;
+      'pta.heading': PtaHeading;
       'pta.hero-section': PtaHeroSection;
       'pta.home-page-about': PtaHomePageAbout;
       'pta.home-page-slider': PtaHomePageSlider;

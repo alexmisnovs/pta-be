@@ -1,7 +1,8 @@
 {
   "collectionName": "components_pta_home_page_abouts",
   "info": {
-    "displayName": "Home Page About"
+    "displayName": "Home Page About",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -17,11 +18,15 @@
       "component": "pta.donate-button"
     },
     "featuredImages": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "content": {
+      "type": "richtext"
     }
   }
 }
