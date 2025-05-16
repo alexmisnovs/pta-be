@@ -705,6 +705,9 @@ export interface ApiHomePageContentHomePageContent
         'pta.hero-section',
         'pta.featured-project',
         'pta.home-page-volunteer-block',
+        'pta.text-with-image',
+        'pta.rich-text-markdown',
+        'pta.heading',
       ]
     >;
     content: Schema.Attribute.RichText;

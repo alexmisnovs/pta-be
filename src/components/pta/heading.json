@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_pta_headings",
+  "info": {
+    "displayName": "Heading",
+    "icon": "arrowUp"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "text"
+    }
+  }
+}

@@ -23,7 +23,10 @@
         "pta.home-page-about",
         "pta.hero-section",
         "pta.featured-project",
-        "pta.home-page-volunteer-block"
+        "pta.home-page-volunteer-block",
+        "pta.text-with-image",
+        "pta.rich-text-markdown",
+        "pta.heading"
       ]
     },
     "content": {
