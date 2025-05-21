@@ -21,6 +21,7 @@ export interface PtaEventComments extends Struct.ComponentSchema {
     amountRaised: Schema.Attribute.Decimal;
     content: Schema.Attribute.RichText;
     heading: Schema.Attribute.Text;
+    slider: Schema.Attribute.Component<'shared.slider', false>;
   };
 }
 
@@ -215,7 +216,7 @@ export interface SharedSlider extends Struct.ComponentSchema {
     icon: 'address-book';
   };
   attributes: {
-    files: Schema.Attribute.Media<'images', true>;
+    slides: Schema.Attribute.Media<'images', true>;
   };
 }
 
